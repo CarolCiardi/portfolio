@@ -13,7 +13,7 @@ Subtracting all sent amounts (outflow transactions).
 Adding or subtracting the accumulated balance from the previous month.
 
 Expected result:
---![Alt text](relative%20path/to/ERD.png?raw=true "Title")
+![What is this](ERD.png)
 
 ## Looker Projects
 test
