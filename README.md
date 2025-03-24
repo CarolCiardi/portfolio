@@ -2,6 +2,8 @@
 
 ## SQL Projects
 
+### <ins>Fintech Case</ins>
+
 ### Problem Statement:
 Your colleague, Jane Hopper, the Business Analyst responsible for analysing customer behaviour and directly consuming data from the Data Warehouse Environment, needs to obtain all Monthly Account Balances in 2020.
 She was unable to do this on her own and has asked for your help in creating the necessary SQL query.
@@ -22,7 +24,6 @@ Adding or subtracting the accumulated balance from the previous month.
 
 ### Solution:
 
-
 **Expected final result columns:**
 - Month
 - Customer
@@ -31,7 +32,7 @@ Adding or subtracting the accumulated balance from the previous month.
 - Acc_Monthly_Balance
 
 **Tables needed:**
-- transfer_ins, transfer_out, pix_movements (to calculate total transfer)
+- transfer_ins, transfer_outs, pix_movements (to calculate total transfer)
 - customer (to get customer name)
 - accounts (to connects customers table to transfer tables)
 - time (to get dates)
@@ -53,7 +54,7 @@ FROM `case-fintech.case_study_fintech.accounts`
 GROUP BY customer_id
 HAVING COUNT (account_id) > 1;
 ```
-Create a table to unify transfer_ins, transfer_out and pix_movements:
+Create a table to unify transfer_ins, transfer_outs and pix_movements:
 
 ```sql
 CREATE OR REPLACE TABLE `case-fintech.case_study_fintech.all_transfers` AS
@@ -97,7 +98,7 @@ SELECT
     EXTRACT (MONTH FROM TIMESTAMP (tm.action_timestamp)) AS month,
     EXTRACT (YEAR FROM TIMESTAMP (tm.action_timestamp)) AS year,
     "transfer_out" AS in_or_out
-FROM `case-fintech.case_study_fintech.transfer_out` tu
+FROM `case-fintech.case_study_fintech.transfer_outs` tu
 LEFT JOIN `case-fintech.case_study_fintech.time` tm ON tu.transaction_completed_at = tm.time_id
 LEFT JOIN `case-fintech.case_study_fintech.accounts` ac ON tu.account_id = ac.account_id
 LEFT JOIN `case-fintech.case_study_fintech.customers` ct ON ac.customer_id = ct.customer_id
@@ -133,5 +134,6 @@ SELECT
 FROM pivot_table
 ORDER BY 2,1;
 ```
+**Output:**
 
-
+<img width="700" alt="Image" src="assets/Output example.png" />
