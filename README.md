@@ -6,8 +6,7 @@
 
 **Problem Statement:**
 
-Your colleague, Jane Hopper, the Business Analyst responsible for analysing customer behaviour and directly consuming data from the Data Warehouse Environment, needs to obtain all Monthly Account Balances in 2020.
-She was unable to do this on her own and has asked for your help in creating the necessary SQL query.
+Retrieve all Monthly Account Balances for the year 2020 from the Data Warehouse Environment using SQL. This data is required for business analysis related to customer behaviour. Ensure the query efficiently extracts the necessary information while maintaining accuracy and performance.
 
 **Business Context:**
 
