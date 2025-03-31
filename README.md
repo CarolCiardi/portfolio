@@ -111,7 +111,7 @@ Query to check it there's data from different years:
 ```sql
 SELECT *
 FROM `case-fintech.case_study_fintech.all_transfers`
-WHERE year <> 2020;
+WHERE year <> 2020; -- The results show that there is no data from years other than 2020.
 ```
 Query to PIVOT data from rows to columns and calculate monthly balance:
 ```sql
